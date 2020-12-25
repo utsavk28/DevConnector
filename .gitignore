@@ -1,6 +1,3 @@
 node_modules/
-./config/default.json
+config/default.json
   
-{
-    "mongoURI":"mongodb+srv://utsavk28:utsavk28@devconnector.ixuxn.mongodb.net/devconnector?retryWrites=true&w=majority"
-}
