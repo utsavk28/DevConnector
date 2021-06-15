@@ -138,7 +138,7 @@ router.get("/", async (req, res) => {
     }
 })
 
-// @route       GET api/profile/user_id
+// @route       GET api/profile/user/user_id
 // @description Get profile by user Id
 // @access      Public
 router.get("/user/:user_id", async (req, res) => {
