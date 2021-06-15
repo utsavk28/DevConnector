@@ -124,7 +124,7 @@ router.post(
 
 
 // @route       GET api/profile
-// @description Get all profiels
+// @description Get all profiles
 // @access      Public
 router.get("/", async (req, res) => {
     try {
@@ -329,7 +329,7 @@ router.get("/github/:username", async (req, res) => {
         request(options, (err, resp, body) => {
             if (err) console.error(err);
 
-            if (resp.statusCode != 200) {
+            if (resp.statusCode !== 200) {
                 return res.status(404).json({ msg: "No Github profile found!" })
             }
 

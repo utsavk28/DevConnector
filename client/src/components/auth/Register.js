@@ -1,20 +1,21 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 
-import PropTypes from 'prop-types';
-
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         password2: '',
     });
-
     const { name, email, password, password2 } = formData;
+    const {
+        auth: { isAuthenticated },
+    } = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     const onChange = (e) => {
         setFormData({
@@ -26,9 +27,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if (password !== password2) {
-            setAlert('Passwords do not match', 'danger', 3000);
+            dispatch(setAlert('Passwords do not match', 'danger', 3000));
         } else {
-            register({ name, email, password });
+            dispatch(register({ name, email, password }));
         }
     };
 
@@ -99,13 +100,4 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     );
 };
 
-Register.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default Register;
