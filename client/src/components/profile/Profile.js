@@ -12,7 +12,7 @@ import ProfileTop from './ProfileTop';
 const Profile = ({ match }) => {
     const dispatch = useDispatch();
     const {
-        profile: { profile, loading },
+        profile: { profile },
         auth,
     } = useSelector((state) => state);
 
